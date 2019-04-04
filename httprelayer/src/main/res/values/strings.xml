@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">HttpRelayer</string>
+
+    <!-- HTTP relayer Strings -->
+    <string name="http_relayer_ongoing_call">HTTP ongoing&#8230;</string>
+    <string name="http_relayer_request_title">Request</string>
+    <string name="http_relayer_response_title">Response</string>
+    <string name="http_relayer_status_title">Code</string>
+    <string name="http_relayer_message_title">Message</string>
+    <string name="http_relayer_ok">OK</string>
+    <string name="http_relayer_error">Error</string>
+    <string name="http_relayer_time_template">t: %1$.2f ms</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="http_relayer_red">#F83839</color>
+    <color name="http_relayer_blue">#3982B0</color>
+    <color name="http_relayer_green">#03A65A</color>
+    <color name="white">#FFFFFF</color>
+</resources>

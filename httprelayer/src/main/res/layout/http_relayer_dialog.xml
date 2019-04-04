@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/http_relayer_parent"
+             android:layout_width="@dimen/http_relayer_default_size"
+             android:layout_height="@dimen/http_relayer_default_size" xmlns:tools="http://schemas.android.com/tools"
+             android:background="@drawable/httpdialog_background"
+             android:backgroundTint="@color/http_relayer_blue"
+             android:elevation="@dimen/margin"
+             android:padding="@dimen/margin"
+             android:animateLayoutChanges="true">
+
+    <ImageView
+            android:id="@+id/http_relayer_expand_button"
+            android:layout_width="@dimen/margin"
+            android:layout_height="@dimen/margin"
+            android:src="@drawable/ic_keyboard_arrow_up_black_24dp"
+            android:tint="@color/white"
+            android:layout_gravity="start"
+            android:visibility="gone"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+    <ImageView
+            android:id="@+id/http_relayer_close_button"
+            android:layout_width="@dimen/margin"
+            android:layout_height="@dimen/margin"
+            android:src="@drawable/ic_close_black_24dp"
+            android:tint="@color/white"
+            android:layout_gravity="end"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+    <LinearLayout
+            android:id="@+id/http_relayer_ongoing_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="visible">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/http_relayer_ongoing_call"
+                style="@style/HttpRelayerTitle"
+                android:layout_marginTop="@dimen/margin_fourth"
+                android:gravity="center"/>
+
+        <ProgressBar
+                android:layout_width="@dimen/margin_20"
+                android:layout_height="@dimen/margin_20"
+                android:indeterminateTint="@color/white"
+                android:layout_marginTop="@dimen/margin_half"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/http_relayer_response_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone">
+
+        <ImageView
+                android:id="@+id/http_relayer_response_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_help_circle"
+                android:tint="@color/white"/>
+
+        <TextView
+                android:id="@+id/http_relayer_status_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="200"
+
+                style="@style/HttpRelayerTitle"
+                android:gravity="center"/>
+
+        <TextView
+                android:id="@+id/http_relayer_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Response message that goes beyond 3 lines"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:gravity="center"
+                style="@style/HttpRelayerText"/>
+
+        <TextView
+                android:id="@+id/http_relayer_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/http_relayer_time_template"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin_fourth"
+                style="@style/HttpRelayerText"
+                android:visibility="gone"/>
+
+        <TextView
+                android:id="@+id/http_relayer_request_method"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="GET"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin_fourth"
+                style="@style/HttpRelayerText"
+                android:visibility="gone"/>
+
+        <TextView
+                android:id="@+id/http_relayer_request_endpoint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="/dashboard"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin_fourth"
+                style="@style/HttpRelayerText"
+                android:visibility="gone"/>
+    </LinearLayout>
+</FrameLayout>

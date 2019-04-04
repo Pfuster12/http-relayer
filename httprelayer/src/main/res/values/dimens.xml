@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- General margin dimens -->
+    <dimen name="margin">16dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_5quarters">24dp</dimen>
+    <dimen name="margin_double">32dp</dimen>
+    <dimen name="margin_quadruple">64dp</dimen>
+    <dimen name="margin_triple">48dp</dimen>
+    <dimen name="margin_3quarter">12dp</dimen>
+    <dimen name="margin_half">8dp</dimen>
+    <dimen name="margin_fourth">4dp</dimen>
+    <dimen name="margin_2dp">2dp</dimen>
+
+    <!--HTTP relayer dimens -->
+    <dimen name="http_relayer_default_size">100dp</dimen>
+    <dimen name="http_relayer_expanded_size">180dp</dimen>
+    <dimen name="navigation_bar_height">48dp</dimen>
+</resources>
