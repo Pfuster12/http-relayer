@@ -4,6 +4,21 @@ A simple Http call visual debugger. Display a small dialog on the bottom right o
 
 ## How it Works
 
+http-relayer is a Jitpack artifact. Add jitpack url to your repositories and the library to your dependencies:
+
+```groovy
+  //project build.gradle
+  repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+   }
+   
+   // app build.gradle
+   dependencies {
+         implementation 'com.github.Pfuster12:http-relayer:1.0.0'
+   }
+```
+
 <img src="httprelayer.gif" width="250">
 
 As a debug tool, the dialog has an option to remain **null** and not appear. To get a **nullable** dialog object you must pass the context and a boolean flag whether the dialog should appear or not. The `isRelayerOn` flag defaults to **false**. Finally call `.create()` to create the dialog and listener.
