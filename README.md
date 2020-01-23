@@ -6,6 +6,9 @@ Http call visual debugger. Display a small dialog on the bottom right of your ap
 
 <img src="httprelayer.gif" width="250">
 
+Success
+--------
+
 ### Small
 
 <img src="screenshot_small.png" width="250">
@@ -13,3 +16,14 @@ Http call visual debugger. Display a small dialog on the bottom right of your ap
 ### Expanded
 
 <img src="screenshot_expanded.png" width="250">
+
+Error
+--------
+
+### Small
+
+<img src="screenshot_error_small.png" width="250">
+
+### Expanded
+
+<img src="screenshot_error_expanded.png" width="250">
