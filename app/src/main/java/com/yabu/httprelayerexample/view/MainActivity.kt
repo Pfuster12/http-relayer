@@ -37,4 +37,15 @@ class MainActivity : AppCompatActivity() {
             test_string.text = str
         }
     }
+
+    private fun performErrorNetworkCall() {
+        val relayer = HttpRelayer.with(this,
+            getSharedPreferences("test", Context.MODE_PRIVATE)
+                .getBoolean(HTTP_RELAYER_PREFERENCE_KEY, false))
+            ?.create()
+        relayer?.setVerbose()
+        HttpService.getErrorUrl(this, relayer) { str ->
+            test_string.text = str
+        }
+    }
 }
