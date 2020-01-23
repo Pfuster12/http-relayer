@@ -1,10 +1,56 @@
 # http-relayer
 
-Http call visual debugger. Display a small dialog on the bottom right of your app screen with an ongoing Http call's status code, message, time taken, and endpoint you are calling.
+A simple Http call visual debugger. Display a small dialog on the bottom right of your app screen with an ongoing Http call's status code, message, time taken, and endpoint you are calling.
 
 ## How it Works
 
 <img src="httprelayer.gif" width="250">
+
+As a debug tool, the dialog has an option to remain **null** and not appear. To get a **nullable** dialog object you must pass the context and a boolean flag whether the dialog should appear or not. The `isRelayerOn` flag defaults to **false**. Finally call `.create()` to create the dialog and listener.
+
+```kotlin
+val relayer = HttpRelayer.with(context=this, isRelayerOn=true)?.create()
+```
+
+Once created you can trigger the dialog to appear by triggering its callback listener in your network calls. For example using `okhttp`:
+
+```kotlin
+val client = OkHttpClient()
+val request: Request = Request.Builder()
+    .url(TEST_URL)
+    .build()
+    
+val relayReq = HttpRelayerRequest(TEST_URL)
+
+relayer?.listener?.onInterceptRequest(relayReq)
+
+client.newCall(request).enqueue(object : Callback {
+    override fun onFailure(call: Call, e: IOException) {
+        val handler = Handler(context.mainLooper)
+        handler.post {
+            relayer?.listener?.onInterceptResponse(
+                HttpRelayerResponse(
+                    relayReq,
+                    400,
+                    e.message))
+        }
+    }
+
+    override fun onResponse(call: Call, response: Response) {
+        val handler = Handler(context.mainLooper)
+        handler.post {
+            callback.invoke(response.body?.string() ?: "")
+            relayer?.listener?.onInterceptResponse(
+                HttpRelayerResponse(
+                    relayReq,
+                    response.code,
+                    response.message
+                )
+            )
+        }
+    }
+})
+```
 
 Success
 --------
