@@ -2,8 +2,8 @@ package com.yabu.httprelayer
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -70,18 +70,18 @@ class HttpRelayerDialog(val context: Context) {
     /**
      * Reference to a listener to pass the callbacks of the HTTP call.
      */
-    var listener: HttpRelayerDialog.InterceptListener? = null
+    var listener: InterceptListener? = null
 
     /**
      * Creates the dialog and listener to inflate this [HttpRelayerDialog].
      * @return [HttpRelayerDialog]
      */
-    fun show(): HttpRelayerDialog {
+    fun create(): HttpRelayerDialog {
         // generate a layout,
         generateDialog()
 
         // set the listener,
-        listener = object : HttpRelayerDialog.InterceptListener {
+        listener = object : InterceptListener {
             override fun onInterceptRequest(request: HttpRelayerRequest) {
                 // log the request time,
                 startTime = System.nanoTime()
@@ -258,7 +258,6 @@ class HttpRelayerDialog(val context: Context) {
             val (screenWidth, screenHeight) = screenDimension.first to screenDimension.second
 
             // navigation bar height
-            val resources = context.getResources()
             val resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android")
             val navHeight = if (resourceId > 0) resources.getDimensionPixelSize(resourceId) else 0
 

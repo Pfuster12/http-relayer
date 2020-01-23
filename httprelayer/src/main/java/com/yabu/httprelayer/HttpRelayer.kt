@@ -1,7 +1,6 @@
 package com.yabu.httprelayer
 
 import android.content.Context
-import android.preference.PreferenceManager
 
 // constants
 
@@ -33,7 +32,8 @@ object HttpRelayer {
      */
     fun with(context: Context): HttpRelayerDialog? {
         // check if relayer is set in the preferences,
-        val isRelayerOn = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(HTTP_RELAYER_PREFERENCE_KEY, false)
+        val isRelayerOn = context.getSharedPreferences("test", Context.MODE_PRIVATE)
+            .getBoolean(HTTP_RELAYER_PREFERENCE_KEY, false)
         // init a null dialog,
         var dialog: HttpRelayerDialog? = null
 
