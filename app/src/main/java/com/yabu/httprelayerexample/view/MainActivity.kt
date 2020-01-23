@@ -8,6 +8,12 @@ import com.yabu.httprelayerexample.R
 import com.yabu.httprelayerexample.data.HttpService
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        /**
+         * A Shared Preference Key to check if [HttpRelayer] should generate a dialog.
+         */
+        const val HTTP_RELAYER_PREFERENCE_KEY = "httprelayer.HTTP_RELAYER_PREFERENCE_KEY"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +28,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun performNetworkCall() {
-        val relayer = HttpRelayer.with(this)?.create()
+        val relayer = HttpRelayer.with(this,
+            getSharedPreferences("test", Context.MODE_PRIVATE)
+                .getBoolean(HTTP_RELAYER_PREFERENCE_KEY, false))
+            ?.create()
         HttpService.getTestUrl(this, relayer)
     }
 }

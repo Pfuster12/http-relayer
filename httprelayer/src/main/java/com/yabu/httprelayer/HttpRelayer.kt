@@ -2,13 +2,6 @@ package com.yabu.httprelayer
 
 import android.content.Context
 
-// constants
-
-/**
- * A Shared Preference Key to check if [HttpRelayer] should generate a dialog.
- */
-const val HTTP_RELAYER_PREFERENCE_KEY = "httprelayer.HTTP_RELAYER_PREFERENCE_KEY"
-
 /**
  * This is a debugging Android library to display in the bottom-right corner of the current
  * context screen the status of an ongoing http call, and display the response code and message
@@ -30,10 +23,7 @@ object HttpRelayer {
      * Provides the context screen parent view to add the dialog to.
      * Creates a [HttpRelayerDialog]
      */
-    fun with(context: Context): HttpRelayerDialog? {
-        // check if relayer is set in the preferences,
-        val isRelayerOn = context.getSharedPreferences("test", Context.MODE_PRIVATE)
-            .getBoolean(HTTP_RELAYER_PREFERENCE_KEY, false)
+    fun with(context: Context, isRelayerOn: Boolean = false): HttpRelayerDialog? {
         // init a null dialog,
         var dialog: HttpRelayerDialog? = null
 
