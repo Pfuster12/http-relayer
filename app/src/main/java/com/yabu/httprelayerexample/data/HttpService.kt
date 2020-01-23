@@ -15,7 +15,7 @@ class HttpService {
         /**
          * GET test url.
          */
-        fun getTestUrl(context: Context, relayer: HttpRelayerDialog?) {
+        fun getTestUrl(context: Context, relayer: HttpRelayerDialog?, callback: (str: String) -> Unit) {
             val client = OkHttpClient()
             val request: Request = Request.Builder()
                 .url(TEST_URL)
@@ -38,6 +38,7 @@ class HttpService {
                 override fun onResponse(call: Call, response: Response) {
                     val handler = Handler(context.mainLooper)
                     handler.post {
+                        callback.invoke(response.body?.string() ?: "")
                         relayer?.listener?.onInterceptResponse(
                             HttpRelayerResponse(
                                 relayReq,

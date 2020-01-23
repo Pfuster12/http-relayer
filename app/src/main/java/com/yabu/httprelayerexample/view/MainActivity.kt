@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.yabu.httprelayer.*
 import com.yabu.httprelayerexample.R
 import com.yabu.httprelayerexample.data.HttpService
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -32,6 +33,8 @@ class MainActivity : AppCompatActivity() {
             getSharedPreferences("test", Context.MODE_PRIVATE)
                 .getBoolean(HTTP_RELAYER_PREFERENCE_KEY, false))
             ?.create()
-        HttpService.getTestUrl(this, relayer)
+        HttpService.getTestUrl(this, relayer) { str ->
+            test_string.text = str
+        }
     }
 }
