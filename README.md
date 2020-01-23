@@ -52,6 +52,13 @@ client.newCall(request).enqueue(object : Callback {
 })
 ```
 
+In order to make the dialog expandable and see more information about the Http call such as time taken and endpoint call the `setVerbose()` method on the dialog object before triggering the listener callbacks:
+
+```kotlin
+val relayer = HttpRelayer.with(context=this, isRelayerOn=true)?.create()
+relayer?.setVerbose()
+```
+
 Success
 --------
 
